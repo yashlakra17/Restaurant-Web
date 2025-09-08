@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restoria | Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Nav -->
+  <header id="navbar">
+    <div class="container nav-container">
+      <div class="logo">Restoria</div>
+
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="menu/menu.html">Menu</a></li>
+          <li><a href="./about/about.html">About</a></li>
+          <li><a href="./reservation/reservation.html">Reservation</a></li>
+          <li><a href="./gallery/gallery.html">Gallery</a></li>
+          <!-- <a href="admin/admin.html" target="_blank">Admin Dashboard</a> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <span class="closebtn" id="closeSidebar">&times;</span>
+    <a href="index.html" id="side-home">Home</a>
+    <a href="menu/menu.html" id="side-menu">Menu</a>
+    <a href="./about/about.html" id="side-about">About</a>
+    <a href="./reservation/reservation.html" id="side-reservation">Reservation</a>
+    <a href="./gallery/gallery.html" id="side-contact">Gallery</a>
+  </div>
+
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <div id="sidebar" class="sidebar">
+    <span class="closebtn" id="closeSidebarBtn">×</span>
+    <a href="index.html" id="side-home">Home</a>
+    <a href="menu/menu.html" id="side-menu">Menu</a>
+    <a href="./about/about.html" id="side-about">About</a>
+    <a href="./reservation/reservation.html" id="side-reservation">Reservation</a>
+    <a href="./gallery/" id="side-contact">Gallery</a>
+  </div>
+  </header>
+
+
+
+  <!-- Hero part -->
+  <section class="hero" id="home">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Delicious by Design</h1>
+      <p>Experience the finest dining with a touch of elegance</p>
+      <a href="./reservation/reservation.html" class="btn">Reserve a Table</a>
+    </div>
+  </section>
+
+  <!-- About Section part  -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Restoria</h2>
+          <p>At Restoria, we believe food is a journey. From fresh ingredients to flawless plating, our chefs
+            create every dish with passion and precision.</p>
+          <p>Founded in 2021, Restoria has become the city's go-to place for gourmet dining with a cozy twist.</p>
+          <button id="about-restoria" href="./about/about.html">About Restoria</button>
+        </div>
+        <div class="about-image">
+          <img src="./assets/chef.jpg" alt="Chef">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact side part -->
+  <div id="contactSidebar" class="contact-sidebar">
+    <button id="closeSidebar" class="close-btn">×</button>
+    <h2>Contact Us</h2>
+    <p>Email: contact@restoria.com</p>
+    <p>Phone: +91 98765 43210</p>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="social-links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:contact@restoria.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <!-- Card part -->
+
+  <section class="book-cards-section" style="cursor:pointer;">
+    <h2 class="cards-heading">Explore Our Features</h2>
+    <div class="book-card">
+      <div class="book-inner">
+        <div class="book-front image-front">
+          <img src="./assets/chef special.jpg" alt="Chef’s Special">
+        </div>
+        <div class="book-back">
+          <h3>Chef’s Special</h3>
+          <p>Try our hand-crafted seasonal delicacy created by the master chef himself!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" style="cursor:pointer;">
+      <div class="book-inner">
+        <div class="book-front image-front">
+          <img src="./assets/story.jpg" alt="Our Story">
+        </div>
+        <div class="book-back">
+          <h3>Our Story</h3>
+          <p>From a small kitchen to a city-wide favorite — we serve love on a plate.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" style="cursor:pointer;">
+      <div class="book-inner">
+        <div class="book-front image-front">
+          <img src="./assets/wine and dine.jpg" alt="Wine & Dine">
+        </div>
+        <div class="book-back">
+          <h3>Wine & Dine</h3>
+          <p>Explore a curated selection of wines that perfectly pair with every dish.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" style="cursor:pointer;">
+      <div class="book-inner">
+        <div class="book-front image-front">
+          <img src="./assets/Dessert.jpg" alt="Dessert Delight">
+        </div>
+        <div class="book-back">
+          <h3>Dessert Delight</h3>
+          <p>Indulge in our freshly baked pastries and signature desserts prepared daily.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" style="cursor:pointer;">
+      <div class="book-inner">
+        <div class="book-front image-front">
+          <img src="./assets/outside meal.jpg" alt="Outdoor Seating">
+        </div>
+        <div class="book-back">
+          <h3>Outdoor Seating</h3>
+          <p>Enjoy your meal under the stars in our ambient outdoor dining area.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" style="cursor:pointer;">
+      <div class="book-inner">
+        <div class="book-front image-front">
+          <img src="./assets/family meal.jpg" alt="Family Meals">
+        </div>
+        <div class="book-back">
+          <h3>Family Meals</h3>
+          <p>Share the love with large portions perfect for the whole family to enjoy.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- testimonial part -->
+
+  <section class="testimonial-slideshow-section">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial-slide active">
+        <p>"Absolutely the best dining experience. Every bite was delicious!"</p>
+        <span>— Priya Sharma</span>
+      </div>
+      <div class="testimonial-slide">
+        <p>"Lovely ambiance and the food was divine. Highly recommended."</p>
+        <span>— Rahul Mehta</span>
+      </div>
+      <div class="testimonial-slide">
+        <p>"Incredible service and unforgettable meals. Restoria is a gem!"</p>
+        <span>— Ananya Verma</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery part -->
+
+  <section class="gallery-section" id="gallery">
+    <h2 class="gallery-heading">Our Dishes</h2>
+    <div class="gallery-slider">
+      <div class="gallery-card" onclick="showDescription('Spicy Paneer Tikka')">
+        <img src="./assets/paneertikka.jpg" alt="Paneer Tikka" />
+      </div>
+      <div class="gallery-card" onclick="showDescription('Creamy Mushroom Pasta')">
+        <img src="./assets/pasta.jpg" alt="Mushroom Pasta" />
+      </div>
+      <div class="gallery-card" onclick="showDescription('Classic Veg Burger')">
+        <img src="./assets/burger.jpg" alt="Veg Burger" />
+      </div>
+      <div class="gallery-card" onclick="showDescription('momo')">
+        <img src="./assets/momo.jpg" alt="Momo" />
+      </div>
+      <div class="gallery-card" onclick="showDescription('cake')">
+        <img src="./assets/cake.jpg" alt="cake" />
+      </div>
+      <div class="gallery-card" onclick="showDescription('naan')">
+        <img src="./assets/naan.jpg" alt="naan" />
+      </div>
+    </div>
+
+    <!-- Dish Description part -->
+
+    <div id="dishPopup" class="dish-popup">
+      <div class="popup-content">
+        <span class="close-popup" onclick="closePopup()">×</span>
+        <h3 id="dishName">Dish Name</h3>
+        <p>cripsy</p>
+        <p>This is a delicious dish made with love and tradition.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Foooter part -->
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <p>We serve joy on plates with a blend of taste, comfort, and tradition. Discover a dining experience worth
+          remembering.</p>
+        <h4>For Employees Only</h4>
+        <a href="./user.html" style="    text-decoration: none;
+          border: 2px soild #fff;
+          color: white;
+          font-size: 15px;
+        cursor: pointer;">Member</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./menu/menu.html">Menu</a></li>
+          <li><a href="./gallery/gallery.html">Gallery</a></li>
+          <li><a href="./about/about.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Opening Hours</h3>
+        <ul class="hours-list">
+          <li>Mon–Fri: 10:00 AM – 10:00 PM</li>
+          <li>Sat–Sun: 11:00 AM – 11:30 PM</li>
+          <li>Open on Holidays</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 <strong>Your Restaurant</strong>. Made with ❤️ and good food.</p>
+    </div>
+  </footer>
+  <div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+  <button class="open-contact-btn" id="openSidebar"><i class="fa-regular fa-phone-volume" style="color: #ffffff;"></i>
+    Contact Us</button>
+
+
+
+  <script src="./script.js">
+    document.addEventListener("DOMContentLoaded", () => {
+      const latest = localStorage.getItem("latestReservation");
+
+      if (latest) {
+        const data = JSON.parse(latest);
+        console.log("🔔 Latest reservation after redirect:", data);
+
+        // Optional: clear it so it only logs once
+        localStorage.removeItem("latestReservation");
+      }
+    });
+  </script>
+
+</body>
+
+</html>

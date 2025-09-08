@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Attendance</title>
+  <style>
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  min-height: 100vh;
+  background: url('your-bg-image.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  background: url('./assets/user-background.jpg') no-repeat center center/cover;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  filter: brightness(0.7);
+}
+
+/* Glassmorphism-style container */
+.login-container {
+  width: 320px;
+  margin: 12vh auto;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 35px 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.login-container input,
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+.login-container input {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.login-container button {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-container button:hover {
+  background: linear-gradient(135deg, #4338ca, #3730a3);
+  transform: scale(1.03);
+}
+
+#loginError {
+  color: #f87171;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Dashboard UI */
+.dashboard {
+  max-width: 520px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 16px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile-pic {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin: 20px 0;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+/* Attendance buttons */
+.attendance-buttons {
+  margin-top: 20px;
+}
+
+.attendance-buttons button {
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  font-size: 14px;
+}
+
+.attendance-buttons button:first-child {
+  background: #10b981;
+  color: white;
+}
+
+.attendance-buttons button:last-child {
+  background: #ef4444;
+  color: white;
+}
+
+.attendance-buttons button:hover {
+  transform: scale(1.08);
+}
+
+/* History Section */
+.history-container {
+  margin-top: 25px;
+  text-align: left;
+  max-height: 220px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.history-entry {
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-left: 6px solid;
+  background: #f9fafb;
+  border-radius: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.present {
+  border-color: #10b981;
+}
+
+.absent {
+  border-color: #ef4444;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="background"></div>
+
+  <div class="login-container" id="loginContainer">
+    <h2>Employee Login</h2>
+    <input type="text" id="empName" placeholder="Name" required />
+    <input type="password" id="empPassword" placeholder="Password" required />
+    <input type="text" id="empID" placeholder="Employee ID" required />
+    <button onclick="login()">Login</button>
+    <p id="loginError"></p>
+  </div>
+
+  <div class="dashboard" id="dashboard" style="display: none;">
+    <h2>Welcome, <span id="displayName"></span></h2>
+    <img src="https://i.pravatar.cc/150?img=12" class="profile-pic" alt="Employee Photo">
+    <div class="attendance-buttons">
+      <button onclick="markAttendance('present')">Mark Present</button>
+      <button onclick="markAttendance('absent')">Mark Absent</button>
+    </div>
+    <p id="attendanceStatus"></p>
+
+    <h3>Attendance History</h3>
+    <div id="attendanceHistory" class="history-container"></div>
+  </div>
+
+  <script>
+    const users = [
+      {
+        name: "yash",
+        password: "yash123",
+        id: "yash0117",
+        photo: "https://i.pravatar.cc/150?img=12"
+      },
+      {
+        name: "riya",
+        password: "riya123",
+        id: "riya69",
+        photo: "https://i.pravatar.cc/150?img=47"
+      },
+      {
+        name: "aman",
+        password: "aman123",
+        id: "aman4u",
+        photo: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg"
+      }
+    ];
+
+    function login() {
+      const name = document.getElementById("empName").value.trim();
+      const password = document.getElementById("empPassword").value.trim();
+      const id = document.getElementById("empID").value.trim();
+      const loginError = document.getElementById("loginError");
+
+      const user = users.find(u => u.name === name && u.password === password && u.id === id);
+
+      if (user) {
+        localStorage.setItem("currentEmployee", JSON.stringify(user));
+        showDashboard(user);
+      } else {
+        loginError.textContent = "Invalid credentials!";
+      }
+    }
+
+    function showDashboard(user) {
+      document.getElementById("loginContainer").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+
+      document.getElementById("displayName").textContent = user.name;
+      document.querySelector(".profile-pic").src = user.photo;
+
+      loadHistory(user.id);
+    }
+
+    function markAttendance(status) {
+      const user = JSON.parse(localStorage.getItem("currentEmployee"));
+      const today = new Date().toISOString().split('T')[0];
+      const all = JSON.parse(localStorage.getItem("employeeAttendance")) || {};
+
+      if (!all[user.id]) {
+        all[user.id] = {};
+      }
+
+      all[user.id][today] = status;
+      localStorage.setItem("employeeAttendance", JSON.stringify(all));
+
+      document.getElementById("attendanceStatus").textContent = `Marked as ${status.toUpperCase()} on ${today}`;
+      setTimeout(() => {
+        localStorage.removeItem("currentEmployee");
+        window.location.reload(); // Redirect back to login
+      }, 1500);
+    }
+
+    function loadHistory(empID) {
+      const all = JSON.parse(localStorage.getItem("employeeAttendance")) || {};
+      const history = all[empID] || {};
+
+      const historyContainer = document.getElementById("attendanceHistory");
+      historyContainer.innerHTML = "";
+
+      Object.keys(history).sort().reverse().forEach(date => {
+        const entry = document.createElement("div");
+        entry.className = `history-entry ${history[date]}`;
+        entry.textContent = `${date} - ${history[date].toUpperCase()}`;
+        historyContainer.appendChild(entry);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = JSON.parse(localStorage.getItem("currentEmployee"));
+      if (user) showDashboard(user);
+    });
+  </script>
+</body>
+</html>
